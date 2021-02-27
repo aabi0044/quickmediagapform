@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Quick Medigap - Form</title>
+</head>
+
+<body class="zf-page" onLoad="loadContent()">
+    <!-- header code -->
+    <header class="d-flex align-items-center">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg p-0 justify-content-between">
+                <a class="navbar-brand logo pl-0 d-flex align-items-center" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Main" viewBox="0 0 36 36">
+                        <path fill-rule="nonzero"
+                            d="M32.612 27.247a17.525 17.525 0 0 0 2.682-9.318C35.294 8.26 27.46.424 17.788.424 8.118.424.282 8.259.282 17.929c0 9.671 7.836 17.506 17.506 17.506 3.46 0 6.636-.988 9.318-2.682L30.353 36l5.506-5.506-3.247-3.247zm-14.824.494c-5.364 0-9.74-4.376-9.74-9.741 0-.776.07-1.482.281-2.188h7.624V8.329a7.694 7.694 0 0 1 1.835-.211c5.365 0 9.741 4.376 9.741 9.74 0 1.271-.211 2.471-.705 3.6L24 18.636l-3.388-3.388.07 5.647-5.576-.141 3.388 3.388 2.894 2.894c-1.13.424-2.33.706-3.6.706z">
+                        </path>
+                    </svg>
+                    QuickMedigap
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navSupport"
+                    aria-controls="navSupport" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navSupport">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Need help?</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- header ends -->
+    <!-- content starts -->
+    <div class="content">
+
+  
+        <div class="progress-bar text-center">
+            <div class="progress">
+                <div class="progress-bar pg-bar"  role="progressbar" id="dynamicProgress"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            <div class="block-progress">
+                <div class="info">Application Progress: <strong id="dynamicProgressValue">8%</strong></div>
+            </div>
+        </div>
+       
+        <div class="container">
+            <form class="zf-steps-wrap">
+                <div class="zf-steps-inner" id="fieldsetcontent">
+                
+          
+                    <!-- <fieldset id="zf_step13" class="zf-step multi-option zf-step13">
+                        <h2 class="step-title text-center">What is your weight? (lbs.)</h2>
+                        <div class="inner d-flex align-items-center flex-wrap">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i1" value="70">
+                                <label class="form-check-label" for="s13_i1">
+                                    <span>70</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i2" value="75">
+                                <label class="form-check-label" for="s13_i2">
+                                    <span>75</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i3" value="80">
+                                <label class="form-check-label" for="s13_i3">
+                                    <span>80</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i4" value="85">
+                                <label class="form-check-label" for="s13_i4">
+                                    <span>85</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i5" value="90">
+                                <label class="form-check-label" for="s13_i5">
+                                    <span>90</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i6" value="95">
+                                <label class="form-check-label" for="s13_i6">
+                                    <span>95</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i7" value="100">
+                                <label class="form-check-label" for="s13_i7">
+                                    <span>100</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i8" value="110">
+                                <label class="form-check-label" for="s13_i8">
+                                    <span>110</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i9" value="120">
+                                <label class="form-check-label" for="s13_i9">
+                                    <span>120</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i10" value="130">
+                                <label class="form-check-label" for="s13_i10">
+                                    <span>130</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i11" value="140">
+                                <label class="form-check-label" for="s13_i11">
+                                    <span>140</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="150">
+                                <label class="form-check-label" for="s13_i12">
+                                    <span>150</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="160">
+                                <label class="form-check-label" for="s13_i13">
+                                    <span>160</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="170">
+                                <label class="form-check-label" for="s13_i14">
+                                    <span>170</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="180">
+                                <label class="form-check-label" for="s13_i15">
+                                    <span>180</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="190">
+                                <label class="form-check-label" for="s13_i16">
+                                    <span>190</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="200">
+                                <label class="form-check-label" for="s13_i17">
+                                    <span>200</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="210">
+                                <label class="form-check-label" for="s13_i18">
+                                    <span>210</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="220">
+                                <label class="form-check-label" for="s13_i19">
+                                    <span>220</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="230">
+                                <label class="form-check-label" for="s13_i20">
+                                    <span>230</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="240">
+                                <label class="form-check-label" for="s13_i21">
+                                    <span>240</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="250">
+                                <label class="form-check-label" for="s13_i22">
+                                    <span>250</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="260">
+                                <label class="form-check-label" for="s13_i23">
+                                    <span>260</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="month" id="s13_i12" value="270">
+                                <label class="form-check-label" for="s13_i24">
+                                    <span>270+</span>
+                                </label>
+                            </div>
+                        </div>
+                        <a href="#" class="go-back">Go back</a>
+                    </fieldset> -->
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- content ends -->
+    <!-- footer starts -->
+    <footer class="text-white form-pg-ftr">
+        <div class="container">
+            <ul class="footer-nav d-flex align-items-center justify-content-center">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+    <!-- footer ends -->
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
