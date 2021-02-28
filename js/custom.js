@@ -134,7 +134,7 @@ function handleNext(value) {
 
   if(value=='pname'){
     validateName()
-    if (index > -1 && steps[index].valid === true) {
+    if (index > -1 && steps[index].value.fname.valid === true &&  steps[index].value.lname.valid === true) {
         steps[index].visible = false;
         steps[index + 1].visible = true;
         loadContent()
