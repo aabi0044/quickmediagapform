@@ -638,9 +638,7 @@ display: none;
 }
 .input-error{
     border: 1px solid red !important;
-    border-width: 3px;
 }
 .input-valid{
-    border: 1px solid green !important;
-    border-width: 3px;
+    border:1px solid green !important;
 }

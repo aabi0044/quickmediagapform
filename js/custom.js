@@ -128,6 +128,9 @@ function handleNext(value) {
     console.log(value);
   const index = steps.findIndex((step) => step.name == value);
   console.log(index);
+  if(value=='gender'  || value == 'month' || value=='day'){
+      steps[index].valid= true;
+  }
   if (index > -1 && steps[index].valid === true) {
     steps[index].visible = false;
     steps[index + 1].visible = true;
@@ -149,20 +152,35 @@ function handleBack(value){
 }
 function zipCodeHandler(){
     var zipcode = document.getElementById('zipcode').value;
-    steps[0].value = zipcode.toString();
+    steps[0].value = zipcode;
     var isValidZip = checkZip(zipcode);
     if(isValidZip){
         steps[0].valid = true;
+        steps[0].checked = true;
+        loadContent(false)
     }else{
         steps[0].valid = false;
     }
-    console.log(isValidZip);
+}
+
+function yearHandler(){
+    const year = document.getElementById('birth_year').value;
+    steps[4].value = year;
+
+    if(year.length==2){
+        steps[4].valid = true;
+        steps[4].checked = true;
+        loadContent(false)
+    }else{
+        steps[4].valid = false;
+    }
 }
 function checkZip(value) {
     return (/(^\d{5}$)|(^\d{5}-\d{4}$)/).test(value);
 };
 
 function loadContent(loading=true) {
+    console.log("loadcontetn");
   var field = document.getElementById("fieldsetcontent");
   steps.forEach((step) => {
     if (step.name === "zipCode" && step.visible === true) {
@@ -576,13 +594,16 @@ function loadContent(loading=true) {
       }
 
       if(step.name ==="year"&& step.visible === true ){
+          console.log(step);
 
         field.innerHTML=`
         <fieldset id="zf_step5" class="zf-step zf-step5">
         <h2 class="step-title text-center">Birth Year?</h2>
         <div class="form-group birth-year">
             <label for="birth_year">19</label>
-            <input type="text" class="form-control"  id="birth_year">
+            <input type="number" min="0" style="font-size:30px !important"  class="${!step.valid&& step.checked&& step.checked ===true? 'input-error form-control':
+            step.valid&& step.checked&& step.checked ===true? "input-valid form-control" :' form-control'
+          }" onkeyup="yearHandler()"  id="birth_year" value="${step.vaule!=="" ? step.value:''}">
         </div>
         <button class="btn block m-auto" onclick="handleNext('year')">next</button>
         <a href="#" class="go-back" type="button" onclick="handleBack('year')">Go back</a>
