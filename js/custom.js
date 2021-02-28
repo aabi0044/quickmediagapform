@@ -124,21 +124,37 @@ const steps = [
   },
 ];
 
+
 function handleNext(value) {
     console.log(value);
   const index = steps.findIndex((step) => step.name == value);
-  console.log(index);
   if(value=='gender'  || value == 'month' || value=='day'){
       steps[index].valid= true;
   }
-  if (index > -1 && steps[index].valid === true) {
-    steps[index].visible = false;
-    steps[index + 1].visible = true;
-    loadContent()
+
+  if(value=='pname'){
+    validateName()
+    if (index > -1 && steps[index].valid === true) {
+        steps[index].visible = false;
+        steps[index + 1].visible = true;
+        loadContent()
+      }else{
+        steps[index].value.fname.checked = true; 
+        steps[index].value.lname.checked = true; 
+        loadContent(false)
+      }  
+
   }else{
-    steps[index].checked = true; 
-    loadContent(false)
+    if (index > -1 && steps[index].valid === true) {
+        steps[index].visible = false;
+        steps[index + 1].visible = true;
+        loadContent()
+      }else{
+        steps[index].checked = true; 
+        loadContent(false)
+      }
   }
+
 }
 
 function handleBack(value){
@@ -178,16 +194,33 @@ function yearHandler(){
 
 function fnameHandler(){
     const fname = document.getElementById('f_name').value;
-    const lname = document.getElementById('l_name');
-    steps[5].value.fname = fname;
-    console.log(fname);
-    console.log(validateName(fname));
+    steps[5].value.fname.value = fname;
     if(fname!=null || fname!=""|| validateName(fname)){
-        steps[5].fname.valid = true;
-        steps[5].fname.checked = true;
-        loadContent(false)
+        steps[5].value.fname.valid = true;
+        steps[5].value.fname.checked = true;
+        // loadContent(false)
     }else{
-        steps[5].fname.valid = false;
+        steps[5].value.fname.valid = false;
+    }
+}
+
+function lnameHandler(){
+    const lname = document.getElementById('l_name').value;
+    steps[5].value.lname.value = lname;
+    if(lname!=null || lname!=""|| validateName(lname)){
+        steps[5].value.lname.valid = true;
+        steps[5].value.lname.checked = true;
+        // loadContent(false)
+    }else{
+        steps[5].value.lname.valid = false;
+    }
+}
+function validateName(){
+    const fname = document.getElementById('f_name').value;
+    const lname = document.getElementById('l_name').value;
+    if(lname!=null || lname!=""|| validateName(lname)||fname!=null || fname!=""|| validateName(fname)){
+        steps[5].valid = true;
+        steps[5].checked = true; 
     }
 }
 
@@ -638,11 +671,11 @@ function loadContent(loading=true) {
         <fieldset id="zf_step6" class="zf-step zf-step6">
         <h2 class="step-title text-center">What is your full name?</h2>
         <div class="inner inner d-flex align-items-center justify-content-between">
-            <div class="form-group control ${!step.fname.valid&& step.fname.checked&& step.fname.checked ===true? 'invalid':
-            step.fname.valid&& step.fname.checked&& step.fname.checked ===true? "valid" :''}">
+            <div class="form-group control ${!step.value.fname.valid&& step.value.fname.checked&& step.value.fname.checked ===true? 'invalid':
+            step.value.fname.valid&& step.value.fname.checked&& step.value.fname.checked ===true? "valid" :''}">
                 <label for="f_name">First name</label>
-                <input type="text" onkeyup="fnameHandler()" value="${step.value.fname.value!=="" ? step.value.fname.value:''}" class="${!step.fname.valid&& step.fname.checked&& step.fname.checked ===true? 'input-error form-control':
-                step.fname.valid&& step.fname.checked&& step.fname.checked ===true? "input-valid form-control" :' form-control'
+                <input type="text" onkeyup="fnameHandler()" value="${step.value.fname.value!=="" ? step.value.fname.value:''}" class="${!step.value.fname.valid&& step.value.fname.checked&& step.value.fname.checked ===true? 'input-error form-control':
+                step.value.fname.valid&& step.value.fname.checked&& step.value.fname.checked ===true? "input-valid form-control" :' form-control'
               }" id="f_name" placeholder="First Name">
                 <div class="validation-icon">
                 <i class="fa fa-check valid" aria-hidden="true"></i>
@@ -650,9 +683,14 @@ function loadContent(loading=true) {
                 <i class="fa fa-spinner" aria-hidden="true"></i>
             </div>
             </div>
-            <div class="form-group">
+            <div class="form-group control ${!step.value.lname.valid&& step.value.lname.checked&& step.value.lname.checked ===true? 'invalid':
+            step.value.lname.valid&& step.value.lname.checked&& step.value.lname.checked ===true? "valid" :''}">
                 <label for="l_name">Last name</label>
-                <input type="text" onkeyup="lnameHandler()" class="form-control" id="l_name" placeholder="Last Name">
+                <input type="text"
+                value="${step.value.lname.value!=="" ? step.value.lname.value:''}" class="${!step.value.lname.valid&& step.value.lname.checked&& step.value.lname.checked ===true? 'input-error form-control':
+                step.value.lname.valid&& step.value.lname.checked&& step.value.lname.checked ===true? "input-valid form-control" :' form-control'
+              }"
+                onkeyup="lnameHandler()" class="form-control" id="l_name" placeholder="Last Name">
             </div>
         </div>
         <button class="btn block m-auto mt-c" onclick="handleNext('pname')">next</button>
@@ -744,7 +782,6 @@ function showProgress(max) {
 function myLoop(min, max) {
   showProgress(min); //  create a loop function
   setTimeout(function () {
-    //  your code here
     min++; //  increment the counter
     if (min < max) {
       //  if the counter < 10, call the loop function
