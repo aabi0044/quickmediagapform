@@ -82,8 +82,8 @@ const steps = [
     id: 1,
     progress: 8,
     value: {
-      fname: "",
-      lname: "",
+      fname:{valid:false,checked:false,value:""},
+      lname: {valid:false,checked:false,value:""},
     },
     html: ``,
     pmin: 30,
@@ -174,6 +174,27 @@ function yearHandler(){
     }else{
         steps[4].valid = false;
     }
+}
+
+function fnameHandler(){
+    const fname = document.getElementById('f_name').value;
+    const lname = document.getElementById('l_name');
+    steps[5].value.fname = fname;
+    console.log(fname);
+    console.log(validateName(fname));
+    if(fname!=null || fname!=""|| validateName(fname)){
+        steps[5].fname.valid = true;
+        steps[5].fname.checked = true;
+        loadContent(false)
+    }else{
+        steps[5].fname.valid = false;
+    }
+}
+
+
+function validateName(name) {
+    var regex =/^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$/ ;
+    return regex.test(name);
 }
 function checkZip(value) {
     return (/(^\d{5}$)|(^\d{5}-\d{4}$)/).test(value);
@@ -617,13 +638,21 @@ function loadContent(loading=true) {
         <fieldset id="zf_step6" class="zf-step zf-step6">
         <h2 class="step-title text-center">What is your full name?</h2>
         <div class="inner inner d-flex align-items-center justify-content-between">
-            <div class="form-group">
+            <div class="form-group control ${!step.fname.valid&& step.fname.checked&& step.fname.checked ===true? 'invalid':
+            step.fname.valid&& step.fname.checked&& step.fname.checked ===true? "valid" :''}">
                 <label for="f_name">First name</label>
-                <input type="text" class="form-control" id="f_name" placeholder="First Name">
+                <input type="text" onkeyup="fnameHandler()" value="${step.value.fname.value!=="" ? step.value.fname.value:''}" class="${!step.fname.valid&& step.fname.checked&& step.fname.checked ===true? 'input-error form-control':
+                step.fname.valid&& step.fname.checked&& step.fname.checked ===true? "input-valid form-control" :' form-control'
+              }" id="f_name" placeholder="First Name">
+                <div class="validation-icon">
+                <i class="fa fa-check valid" aria-hidden="true"></i>
+                <i class="fa fa-times" aria-hidden="true"></i>
+                <i class="fa fa-spinner" aria-hidden="true"></i>
+            </div>
             </div>
             <div class="form-group">
                 <label for="l_name">Last name</label>
-                <input type="text" class="form-control" id="l_name" placeholder="Last Name">
+                <input type="text" onkeyup="lnameHandler()" class="form-control" id="l_name" placeholder="Last Name">
             </div>
         </div>
         <button class="btn block m-auto mt-c" onclick="handleNext('pname')">next</button>
